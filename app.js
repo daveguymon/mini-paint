@@ -1,9 +1,9 @@
 $(document).ready(function(){
     
-     var color = 'white';
+    var color = 'white';
     var colors = 'white green red blue yellow';
+    var isDragging = false;
     
-   
     
     $('.box').on('click', function(){
         $(this).addClass(color);
@@ -13,7 +13,7 @@ $(document).ready(function(){
         $(this).removeClass(colors);
     })
     
-    $('#reset').on('click', function() {
+    $('#reset').on('click', function(){
         $('.box').removeClass(colors);
     })
     
@@ -24,7 +24,7 @@ $(document).ready(function(){
     $('#blue').on('click', function(){
         color = 'blue';
     })
-
+    
     $('#green').on('click', function(){
         color = 'green';
     })
@@ -38,4 +38,23 @@ $(document).ready(function(){
     })
     
     
-})
+//    paint dragging code below
+    
+    $('.box').on('mousedown', function() {
+        isDragging = true;
+        $('.box').on('mouseover', function() {
+        if(isDragging) {
+            $(this).addClass(color);
+        }
+    })
+    
+    
+    })
+    
+    $('.box').on('mouseup', function() {
+        isDragging = false;
+    })
+    
+    
+    
+});
